@@ -4,8 +4,11 @@
 [metadata]
 groups = ["default", "dev"]
 strategy = ["cross_platform"]
-lock_version = "4.4.1"
-content_hash = "sha256:9a691614dd96d6d53b91b00365c1891e969477b17d14cb0f3e61550275a5ed52"
+lock_version = "4.5.0"
+content_hash = "sha256:12e39917b4143a82024253b9926af5e7709fea03d32484e94ef9b0d70c98a01e"
+
+[[metadata.targets]]
+requires_python = ">=3.11"
 
 [[package]]
 name = "blurhash"
