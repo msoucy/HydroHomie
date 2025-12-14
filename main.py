@@ -1,14 +1,10 @@
 #!/usr/bin/env python
-from mastodon import Mastodon
-from random import choice
+from atproto import Client
+from dotenv import load_dotenv
 from pprint import pprint
+from random import choice
 import os
 
-masto = Mastodon(
-    api_base_url='https://botsin.space',
-    client_id="client_id.txt",
-    access_token="access_token.txt"
-)
 
 def readFile(fn):
     with open(fn) as fi:
@@ -18,10 +14,15 @@ def readFile(fn):
             if not line.startswith("#")]
 
 if __name__ == '__main__':
+    load_dotenv()
     texts = readFile("hydro.txt")
     text = choice(texts)
-    print("Tooting:", text)
-    status_result = masto.status_post(text)
-    with open("hydro.log", "a") as of:
+    print("Posting:", text)
+
+    client = Client()
+    client.login(os.environ["BSKY_USERNAME"], os.environ["BSKY_PASSWORD"])
+
+    status_result = client.send_post(text)
+    with open("posts.log", "a") as of:
         pprint(status_result, stream=of)
 

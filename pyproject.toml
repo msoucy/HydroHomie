@@ -1,23 +1,10 @@
-[tool.pdm]
-[[tool.pdm.source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-
-[tool.pdm.dev-dependencies]
-dev = []
-
 [project]
-name = ""
-version = ""
-description = ""
-authors = [
-    {name = "Matt Soucy", email = "git@msoucy.me"},
+name = "hydrohomie"
+version = "0.1.0"
+description = "Reminds people to drink their water"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "atproto>=0.0.65",
+    "python-dotenv>=1.2.1",
 ]
-dependencies = ["mastodon.py"]
-requires-python = ">=3.11"
-license = {text = "MIT"}
-
-[build-system]
-requires = ["pdm-pep517>=1.0.0"]
-build-backend = "pdm.pep517.api"
