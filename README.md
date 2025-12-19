@@ -1,8 +1,8 @@
-Daily Altruism
-==============
+Hydro Homie
+===========
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Simple bot that randomly chooses a good deed for the day, and posts it on Mastodon.
+Simple bot that reminds you to drink water at regular intervals!
 
-Posts to [DailyAltruism](https://botsin.space/@DailyAltruism).
+Posts to BlueSky at `hydro-homie.bsky.social`
