@@ -42,11 +42,13 @@ if __name__ == '__main__':
 
     if cfg := configs.get(args.config):
         texts = []
-        rootdir = cfg.get("path", args.config)
+        rootdir = os.path.join("posts", cfg.get("path", args.config))
         for fn in os.listdir(rootdir):
             texts.extend(read_file(os.path.join(rootdir, fn)))
         text = choice(texts)
         print("Posting:", text)
+
+        sys.exit(0)
 
         client = Client()
         client.login(cfg["username"], cfg["password"], file=sys.stderr)
