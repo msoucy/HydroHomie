@@ -25,6 +25,7 @@ if __name__ == '__main__':
     argp = ArgumentParser()
     argp.add_argument("--configfile", "-f", default="botconfig.yaml")
     argp.add_argument("config", nargs="?", default="default")
+    argp.add_argument("--dry-run", "-d", action='store_true')
     args = argp.parse_args()
 
     configs = []
@@ -37,7 +38,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     if not configs:
-        print("No configuration loaded, terminating")
+        print("No configuration loaded, terminating", file=sys.stderr)
         sys.exit(1)
 
     if cfg := configs.get(args.config):
@@ -48,10 +49,11 @@ if __name__ == '__main__':
         text = choice(texts)
         print("Posting:", text)
 
-        sys.exit(0)
+        if args.dry_run:
+            sys.exit(0)
 
         client = Client()
-        client.login(cfg["username"], cfg["password"], file=sys.stderr)
+        client.login(cfg["username"], cfg["password"])
 
         status_result = client.send_post(text)
         with open("posts.log", "a") as of:
